@@ -77,6 +77,7 @@ def is_collision(x, y, z, w):
 
 # for i in range(100):
 #     snake_body_img.append(pygame.image.load("snake copy.png"))
+
 score=0
 color=(0,0,0)
 gameover=pygame.image.load("gameover.png")
@@ -86,7 +87,6 @@ running = True
 # infinitely running
 with open("hiscore.txt","r") as file:
     hi_score = file.read()
-
 
 while running:
 
@@ -150,7 +150,9 @@ while running:
         end_sound=mixer.Sound("game over.mp3")
         end_sound.play()
         screen.blit(gameover,(0,33))
+
         # screen.blit(play_again,(450,550))
+
         
     
         
@@ -162,12 +164,14 @@ while running:
         snake_bodyX.append(-80)
         snake_bodyY.append(-80)
         fruit(fruitX,fruitY)
+
         score=score+1
         hiscore =hi_score
         if(score>int(hiscore)):
             hiscore = score
         with open("hiscore.txt","w") as file:
             file.write(str(hiscore))
+
         fruitX = int(random.uniform(0,1)*((920/40)))*40 +40
         fruitY = int(random.uniform(0,1)*((720/40)))*40 +40
 
@@ -176,7 +180,6 @@ while running:
             snake_head( snake_bodyX[i],  snake_bodyY[i], snake_head_state)
         
         if i!=0:
-            
             snake_body( snake_bodyX[i],  snake_bodyY[i], snake_head_state)
             snake_bodyX[i]=snake_bodyX[i-1]
             snake_bodyY[i]=snake_bodyY[i-1]
@@ -192,6 +195,7 @@ while running:
     # print(snake_bodyX[0])
     # print(snake_bodyY[0])  
     
+
     # hiscore =0
     # if(score>hiscore):
     #     hiscore = score
@@ -203,3 +207,4 @@ while running:
     pygame.display.update()
 
 print(hi_score)
+
