@@ -11,7 +11,7 @@ pygame.init()
 # width, height
 screen = pygame.display.set_mode((1000, 800))
 background_image = pygame.image.load("home.jpg")
-play_button_image = pygame.image.load("play.jpg")
+play_button_image = pygame.image.load("play2.png")
 
 # Blit the images to the screen
 screen.blit(background_image, (0, 0))
