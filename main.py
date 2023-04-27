@@ -80,6 +80,20 @@ def is_collision(x, y, z, w):
 score=0
 color=(0,0,0)
 gameover=pygame.image.load("gameover.png")
+
+fornt=pygame.font.Font("freesansbold.ttf",32)
+
+textX=10
+textY=10
+testX=750
+testY=10
+def show_score(x,y):
+    score1=fornt.render("Score : "+ str(score),True,(255,255,255))
+    screen.blit(score1,(x,y))
+def show_hiscore(x,y):
+    score2=fornt.render("High Score : "+ str(hi_score),True,(255,255,255))
+    screen.blit(score2,(x,y))
+
 # play_again=pygame.image.load("play_again.png")
 running = True
 # game loop
@@ -197,7 +211,8 @@ while running:
     #     hiscore = score
     # with open("hiscore.txt","a") as file:
     #     file.write(str(hiscore))
-
+    show_score(textX,textY)
+    show_hiscore(testX,testY)
     time.sleep(0.1)
     # updating screen in continuous time
     pygame.display.update()
