@@ -78,12 +78,16 @@ def is_collision(x, y, z, w):
 # for i in range(100):
 #     snake_body_img.append(pygame.image.load("snake copy.png"))
 
+score=0
 color=(0,0,0)
 gameover=pygame.image.load("gameover.png")
-play_again=pygame.image.load("play_again.png")
+# play_again=pygame.image.load("play_again.png")
 running = True
 # game loop
 # infinitely running
+with open("hiscore.txt","r") as file:
+    hi_score = file.read()
+
 while running:
 
     screen.fill((255, 255, 255))
@@ -146,7 +150,9 @@ while running:
         end_sound=mixer.Sound("game over.mp3")
         end_sound.play()
         screen.blit(gameover,(0,33))
-        screen.blit(play_again,(450,550))
+
+        # screen.blit(play_again,(450,550))
+
         
     
         
@@ -158,6 +164,14 @@ while running:
         snake_bodyX.append(-80)
         snake_bodyY.append(-80)
         fruit(fruitX,fruitY)
+
+        score=score+1
+        hiscore =hi_score
+        if(score>int(hiscore)):
+            hiscore = score
+        with open("hiscore.txt","w") as file:
+            file.write(str(hiscore))
+
         fruitX = int(random.uniform(0,1)*((920/40)))*40 +40
         fruitY = int(random.uniform(0,1)*((720/40)))*40 +40
 
@@ -181,7 +195,16 @@ while running:
     # print(snake_bodyX[0])
     # print(snake_bodyY[0])  
     
+
+    # hiscore =0
+    # if(score>hiscore):
+    #     hiscore = score
+    # with open("hiscore.txt","a") as file:
+    #     file.write(str(hiscore))
+
     time.sleep(0.1)
     # updating screen in continuous time
     pygame.display.update()
+
+print(hi_score)
 
