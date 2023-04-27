@@ -4,7 +4,6 @@ import math
 import time
 from pygame import mixer
 
-
 # initialize oygame
 pygame.init()
 # creating a game window
@@ -13,7 +12,7 @@ screen = pygame.display.set_mode((1000, 800))
 
 # title and icon
 pygame.display.set_caption("Snake")
-background=pygame.image.load("images (1).jpeg")
+background=pygame.image.load("images/game_background.jpeg")
 
 # mixer.music.load("bg_music.mp3")
 # mixer.music.play(-1)
@@ -34,13 +33,11 @@ snake_headX_change = 0
 snake_headY_change = 0
 
 if snake_head_state!='rest':
-    mixer.music.load("bg_music.mp3")
+    mixer.music.load("sounds/background_music.mp3")
     mixer.music.play(-1)
 
-snake_body_img.append(pygame.image.load("snake_head(1).jpeg"))
-snake_body_img.append(pygame.image.load("snake.jpg"))
-
-
+snake_body_img.append(pygame.image.load("images/snake_head.jpeg"))
+snake_body_img.append(pygame.image.load("images/snake_tail.jpg"))
 
 def snake_head(x, y, state):
     if state == "play":
@@ -51,14 +48,12 @@ def snake_body(x, y, state):
         screen.blit(snake_body_img[1], (x, y))
 
 # importing fruit
-fruitimg = pygame.image.load("fruit(1).png")
+fruitimg = pygame.image.load("images/fruit.png")
 fruitX = int(random.uniform(0,1)*((920/40)))*40 +40
 fruitY = int(random.uniform(0,1)*((720/40)))*40 +40
 
-
 def fruit(x, y):
     screen.blit(fruitimg, (x, y))
-
 
 def is_collision(x, y, z, w):
     distance = math.sqrt((math.pow(x-z, 2))+(math.pow(y-w, 2)))
@@ -66,7 +61,6 @@ def is_collision(x, y, z, w):
         return True
     else:
         return False
-
 
 # importing tail
 # snake_body_img=[]
@@ -80,7 +74,7 @@ def is_collision(x, y, z, w):
 
 score=0
 color=(0,0,0)
-gameover=pygame.image.load("gameover.png")
+gameover=pygame.image.load("images/game_over_background.png")
 
 fornt=pygame.font.Font("freesansbold.ttf",32)
 
@@ -126,7 +120,6 @@ while running:
                 snake_headX_change = 20
 
     
-
     # boundary detection
     if  snake_bodyX[0]<= 20:
         snake_bodyX[0] = -1100
@@ -159,21 +152,15 @@ while running:
 
     collision = is_collision( snake_bodyX[0],  snake_bodyY[0], fruitX, fruitY)
     
-    
     if snake_head_state=="rest":
-        end_sound=mixer.Sound("game over.mp3")
+        end_sound=mixer.Sound("sounds/game_over.mp3")
         end_sound.play()
         screen.blit(gameover,(0,33))
 
         # screen.blit(play_again,(450,550))
 
-        
-    
-        
-        
-
     if collision:
-        eat_sound=mixer.Sound('eat.mp3')
+        eat_sound=mixer.Sound('sounds/eat.mp3')
         eat_sound.play()
         snake_bodyX.append(-80)
         snake_bodyY.append(-80)
@@ -222,4 +209,3 @@ while running:
     pygame.display.update()
 
 print(hi_score)
-
