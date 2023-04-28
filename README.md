@@ -7,8 +7,10 @@ To access this game, you can either clone the repository using Git or download t
 * To clone the repository using Git, follow these steps:
     1. Open the terminal on your system.
     2. Navigate to the location where you want to save the game using the 'cd' command.
-    3. Run the command 'git clone' followed by the URL of the repository. For example: 
-       git clone https://github.com/YourUserName/YourRepositoryName.git
+    3. Run the command 
+    ```
+        git clone https://github.com/charvimehradu/SnakeGame.git
+    ```
     4. Press Enter to clone the repository. 
 
 * Alternatively, you can download the zip file directly by following these steps:
