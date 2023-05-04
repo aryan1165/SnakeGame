@@ -75,7 +75,7 @@ def is_collision(x, y, z, w):
 score=0
 color=(0,0,0)
 gameover=pygame.image.load("images/game_over_background.png")
-
+# adding font 
 fornt=pygame.font.Font("freesansbold.ttf",32)
 
 textX=10
